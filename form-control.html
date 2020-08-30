@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap-4.5.0-dist/bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/4be048628b.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/form-control.html">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/form-control.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login.html">Login</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                One of three columns
+            </div>
+            <div class="col-6">
+                <h3>Hamburger rendelés</h3>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <strong>Kedves vásárlónk!</strong> A rendeléshez kérem töltse ki az űrlapot!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="orderForm" action="">
+                    <div class="form-group">
+                        <label for="">Feltét</label>
+                        <select id="topInput" name="top-input" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mennyiség</label>
+                        <input type="number" name="amount-input" class="form-control">
+                        <small class="form-text text-muted">
+                            Minimum 1, maximum 10 db
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        Fizetendő: <span class="show-amount">0</span>Ft
+                    </div>
+                    <button type="submit" class="btn btn-primary">Megrendelés</button>
+                    <button id="submitButton" type="submit" class="btn btn-primary">Küldés</button>
+                </form>
+            </div>
+            <div class="col-3">
+                One of three columns
+            </div>
+        </div>
+    </div>
+    <form>
+        <fieldset>
+            <legend>Személyes adatok</legend>
+            <div>
+                <label for="name">Név: *</label>
+                <input id="name" name="name" type="text" required>
+            </div>
+            <div>
+                <label for="email">Email cím: *</label>
+                <input id="email" name="email" type="email" required>
+            </div>
+            <div>
+                <label for="address">Cím: *</label>
+                <input id="address" name="address" type="text" required>
+            </div>
+            <div>
+                <label for="comment">Megjegyzés</label>
+                <textarea id="comment" name="comment" rows="5"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Extrák</legend>
+            <span>Feltétek:</span>
+            <div>
+                <input checked in id="nothing" name="extra" type="radio" value="0">
+                <label for="nothing">Nem kérek</label>
+            </div>
+            <div>
+                <input id="cheese" name="extra" type="radio" value="0">
+                <label for="cheese">Cheese</label>
+            </div>
+            <div>
+                <input id="double-cheese" name="extra" type="radio" value="0">
+                <label for="double-cheese">Double-cheese</label>
+            </div>
+            <div>
+                <input id="double-meat" name="extra" type="radio" value="0">
+                <label for="double-meat">Double-meat</label>
+            </div>
+            <div>
+                <input id="double-double" name="extra" type="radio" value="0">
+                <label for="double-double">Double-double</label>
+            </div>
+        </fieldset>
+    </form>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+
+    <button type="button" class="btn btn-link">Link</button>
+    <script src="js/main.js"></script>
+    <script src="js/scope.js"></script>
+    <script src="js/algo.js"></script>
+</body>
+
+</html>
