@@ -22,6 +22,10 @@ body {
     border:none;
 }
 
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+
 /*
 .login-div input[type="email"] {
     border: solid 1px blue;
