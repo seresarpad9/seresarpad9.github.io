@@ -1,60 +1,27 @@
-function calcAmount() {
-    let price = 1000;
-    let amountInput = document.querySelector("input[name='amount-input']");
-    let amountNumber = parseInt(amountInput.value);
-    amountNumber = isNaN(amountNumber) ? 0 : amountNumber;
-    
-    showSumPrice(price, amountNumber);
-}
-
-function showSumPrice(price, amountNumber) {
-    let showAmount = document.querySelector("span.show-amount");
-    if ( amountNumber > 10 ) {
-        alert("Maximum 10 terméket vásárolhat!");
-     } else if (amountNumber < 1 ) {
-        alert("Minimum 1 terméket kell vásárolnia!")
-    } else {
-        let amount = price * parseInt(amountInput.value);
-        showAmount.innerHTML = amount;
-    }
-  }
-
-    let orderForm = document.querySelector( "#orderForm" );
-  orderForm.addEventListener("submit", function(ev) {
-        ev.preventDefault();
-        console.log( this );
-        let inputs = this.querySelectorAll( "input" );
-        let values = {};
-        for ( let i = 0; i < inputs.length; i++ ) {
-            values[inputs[i].name] = inputs[i].value;
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
         }
-        console.log(values);
-  })
-
-  let alertCloseButtons = document.querySelectorAll( ".close[data-dismiss='alert']" );
-  let alertCloseEventHandlerFunction = function(ev) {
-    console.log( ev );
-    this.parentElement.style.display = "none";
-}
-  for (let i=0; i < alertCloseButtons.length; i++ ) {
-      alertCloseButtons[i].addEventListener( "click", alertCloseEventHandlerFunction );
-  }
-
-  //Select elem kitöltése
-  let toppings = [
-      "Szalonna",
-      "Hagyma",
-      "Tükörtojás",
-      "Libamáj",
-      "Extra sonka"
-  ];
-
-  let toppingSelect = document.querySelector("#topInput");
-  let index = 0;
-  while (index < toppings.length) {
-      let option = document.createElement("option");
-      option.value = index;
-      option.innerHTML = toppings[index];
-      toppingSelect.appendChild(option);
-      index++;
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
   }
