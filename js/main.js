@@ -1,27 +1,33 @@
-  function includeHTML() {
-    var z, i, elmnt, file, xhttp;
-    /* Loop through a collection of all HTML elements: */
-    z = document.getElementsByTagName("*");
-    for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
-        }
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /* Exit the function: */
-        return;
-      }
+function setLanguage(selectedLanguage) {
+    var currentLang, innerHtmlElement;
+    currentLang = document.querySelector("#navbarLanguageDropdown").text.trim();
+    if (currentLang != selectedLanguage) {
+        innerHtmlElement = document.querySelector("#navbarLanguageDropdown").innerHTML;
+        document.querySelector("#navbarLanguageDropdown").innerHTML = innerHtmlElement.replace(currentLang, selectedLanguage);
+        lang = selectedLanguage;
+    }   
+    return;
+}
+
+function translateNavbar() {
+    translate("#navbarDropdownProducts", "Alkotásaim", "Products"); 
+    translate("#paintings", "Festmények", "Paintings"); 
+    translate("#ceramics", "Kerámiák", "Ceramics"); 
+    translate("#treasuries", "Ékszerek", "Treasuries"); 
+    translate("#dresses", "Ruhák", "Dresses"); 
+    translate("#aboutme", "Rólam", "About me");
+    translate("#contact", "Kontakt", "Contact"); 
+    return;
+}
+
+function translate(elementId, hunText, itaText){
+    var innerHtmlElement, currentText;
+    innerHtmlElement = document.querySelector(elementId).innerHTML;
+    currentText =  document.querySelector(elementId).text.trim();
+    if (lang == "HUN") {
+        document.querySelector(elementId).innerHTML = innerHtmlElement.replace(currentText, hunText)
+    } else {
+        document.querySelector(elementId).innerHTML = innerHtmlElement.replace(currentText, itaText)
     }
-  }
+    return;
+}
